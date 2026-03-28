@@ -1,30 +1,61 @@
 # GitHub Wrapped
 
-A visual, shareable yearly recap of any public GitHub profile.
+> A visual, shareable yearly recap of any public GitHub profile.
+
+![Next.js](https://img.shields.io/badge/Next.js-16-111111?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind-v4-0B1120?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8)
+![Octokit](https://img.shields.io/badge/Octokit-GitHub_API-24292E?style=for-the-badge&logo=github&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Motion-Animations-1A1A1A?style=for-the-badge&logo=framer&logoColor=white)
 
 Built with Next.js App Router, Octokit, Framer Motion, and dynamic OG image generation.
 
+## Preview vibe
+
+- `Dark GitHub-inspired UI` with subtle depth and clean borders.
+- `Smooth transitions` for card navigation (keyboard, arrows, swipe).
+- `Share-ready output` through PNG export + dynamic OG images.
+
 ## What this app does
 
-- Search any public GitHub username from the landing page.
-- Fetch profile + repository activity server-side.
-- Compute yearly stats (commits, top languages, streaks, schedule, top repo).
-- Present results as animated cards with carousel navigation.
-- Export cards as PNG and share on social platforms.
-- Generate dynamic Open Graph previews at `/api/og/[username]`.
+- 🔎 Search any public GitHub username from the landing page.
+- ⚙️ Fetch profile + repository activity server-side.
+- 📊 Compute yearly stats (commits, top languages, streaks, schedule, top repo).
+- 🎞️ Present results as animated cards with carousel navigation.
+- 🖼️ Export cards as PNG and share on social platforms.
+- 🌐 Generate dynamic Open Graph previews at `/api/og/[username]`.
 
 ## Stack
 
-- `next` (App Router, TypeScript)
-- `tailwindcss` v4
-- `octokit` (GitHub REST API client)
-- `framer-motion` (card transitions)
-- `html-to-image` (PNG export)
-- `@vercel/og` (Satori-based OG images)
+| Layer | Tech |
+|---|---|
+| Framework | `next` (App Router, TypeScript) |
+| Styling | `tailwindcss` v4 |
+| Data/API | `octokit` |
+| Animation | `framer-motion` |
+| Export | `html-to-image` |
+| Social Preview | `@vercel/og` |
 
 ## Architecture
 
 The project follows a clean split between data, domain logic, and presentation.
+
+```text
+Browser UI
+   │
+   ├─ app/page.tsx + UsernameInput
+   │
+   ▼
+app/[username]/page.tsx (server)
+   │
+   ├─ lib/github.ts  -> GitHub REST API (Octokit)
+   └─ lib/stats.ts   -> Wrapped metrics
+   │
+   ▼
+CardCarousel + Cards + ShareButtons
+   │
+   └─ /api/og/[username] -> Dynamic OG image
+```
 
 ### 1) Data layer (`lib/github.ts`)
 
@@ -112,6 +143,16 @@ github-wrapped/
 6. Share actions export card images or open social intents.
 7. Metadata points to `/api/og/[username]` for dynamic previews.
 
+## Quickstart
+
+```bash
+pnpm install
+cp .env.example .env.local
+pnpm dev
+```
+
+Then open `http://localhost:3000`.
+
 ## Environment
 
 Copy `.env.example` to `.env.local` and set values as needed:
@@ -121,16 +162,7 @@ GITHUB_TOKEN=
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
-- `GITHUB_TOKEN` is optional, but recommended for higher API rate limits.
-
-## Run locally
-
-```bash
-pnpm install
-pnpm dev
-```
-
-Open `http://localhost:3000`.
+- `GITHUB_TOKEN` is optional, but highly recommended for higher API rate limits.
 
 ## Build and quality checks
 
@@ -139,6 +171,14 @@ pnpm lint
 pnpm build
 pnpm start
 ```
+
+## Testing essentials
+
+- Landing input -> route navigation to `/[username]`
+- Server data load + graceful error states
+- Card carousel interactions (buttons, keys, swipe)
+- Share actions (PNG export + social intents)
+- OG endpoint response at `/api/og/[username]`
 
 ## Notes and limits
 
@@ -169,3 +209,7 @@ In short, this project demonstrates how to combine:
 - Tool-augmented engineering workflows (MCP providers)
 
 to ship a production-grade frontend application faster.
+
+---
+
+If you liked this project, feel free to fork it and create your own yearly developer story. ✨
