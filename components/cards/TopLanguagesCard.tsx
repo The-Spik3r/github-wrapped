@@ -13,12 +13,12 @@ export function TopLanguagesCard({ topLanguages }: TopLanguagesCardProps) {
           {topLanguages.map((item, index) => (
             <div key={item.language} className="space-y-1">
               <div className="flex items-center justify-between">
-                <span className="text-2xl font-bold text-white">#{index + 1} {item.language}</span>
-                <span className="text-sm font-semibold text-zinc-300">{item.percentage}%</span>
+                <span className="text-2xl font-bold text-foreground-strong">#{index + 1} {item.language}</span>
+                <span className="text-sm font-semibold text-foreground-muted">{item.percentage}%</span>
               </div>
-              <div className="h-2 overflow-hidden rounded-full bg-white/10">
+              <div className="h-2 overflow-hidden rounded-full bg-surface-elevated">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-accent-violet via-accent-cyan to-accent-green"
+                  className="h-full rounded-full bg-accent transition-all duration-500"
                   style={{ width: `${Math.max(item.percentage, 6)}%` }}
                 />
               </div>
@@ -26,7 +26,7 @@ export function TopLanguagesCard({ topLanguages }: TopLanguagesCardProps) {
           ))}
         </div>
       ) : (
-        <p className="text-zinc-300">No hubo suficiente data para calcular lenguajes top.</p>
+        <p className="text-foreground-muted">No hubo suficiente data para calcular lenguajes top.</p>
       )}
     </CardShell>
   );

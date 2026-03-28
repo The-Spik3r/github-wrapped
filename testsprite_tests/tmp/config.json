@@ -1,0 +1,18 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "executionArgs": {
+    "projectName": "github-wrapped",
+    "projectPath": "F:\\AI\\github-wrapped",
+    "testIds": [],
+    "additionalInstruction": "Focus on testing essentials: landing input flow, username navigation, wrapped cards rendering, carousel navigation (arrows/dots/swipe where possible), and share buttons visibility/interaction safety.",
+    "serverMode": "production",
+    "envs": {
+      "API_KEY": "sk-user--QhLuB5TngM9RGBg28FOzQpSb2Y33y0ID7aJfj3pfvhzpo1ECfD5vsL_X7364M-SKqdsCR7mI5RP_SUaBh4d411xNQs0rPlzR55pz4xl3TAKmwxl04JtZHrtgw2ZiM-0W4k"
+    }
+  },
+  "serverPort": 63118,
+  "proxy": "http://e810b67c-4ed0-4210-8b7c-c450b11a5f1a:fuKZ21XvEPzF8sxYBAKw5MOYIXeCd93T@tun.testsprite.com:8080"
+}

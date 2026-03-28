@@ -10,11 +10,11 @@ export function TopRepoCard({ topRepo }: TopRepoCardProps) {
     <CardShell title="Top Repo" subtitle="Repositorio con mayor volumen de commits">
       {topRepo ? (
         <>
-          <p className="text-4xl font-black tracking-tight text-white sm:text-5xl">{topRepo.name}</p>
-          <p className="text-lg text-zinc-200">{topRepo.commits} commits en el ano</p>
+          <p className="text-4xl font-black tracking-tight text-foreground-strong sm:text-5xl">{topRepo.name}</p>
+          <p className="text-lg text-foreground">{topRepo.commits} commits en el ano</p>
         </>
       ) : (
-        <p className="text-zinc-300">No se encontro un repositorio dominante este ano.</p>
+        <p className="text-foreground-muted">No se encontro un repositorio dominante este ano.</p>
       )}
     </CardShell>
   );

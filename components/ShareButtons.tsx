@@ -49,14 +49,14 @@ export function ShareButtons({ targetRef, username }: ShareButtonsProps) {
       <button
         type="button"
         onClick={handleDownload}
-        className="rounded-xl border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20"
+        className="rounded-lg border border-border bg-surface-soft px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-foreground-strong"
       >
         {isDownloading ? "Generando..." : "Descargar como imagen"}
       </button>
 
-      <button
+        <button
         type="button"
-        className="rounded-xl border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20"
+        className="rounded-lg border border-border bg-surface-soft px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-foreground-strong"
         onClick={openTwitterShare}
       >
         Compartir en Twitter
@@ -64,7 +64,7 @@ export function ShareButtons({ targetRef, username }: ShareButtonsProps) {
 
       <button
         type="button"
-        className="rounded-xl border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20"
+        className="rounded-lg border border-border bg-surface-soft px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-foreground-strong"
         onClick={openLinkedInShare}
       >
         Compartir en LinkedIn

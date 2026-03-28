@@ -9,11 +9,11 @@ interface SummaryCardProps {
 export function SummaryCard({ username, stats }: SummaryCardProps) {
   return (
     <CardShell title="Summary" subtitle="Tu GitHub Wrapped en una sola vista">
-      <p className="text-3xl font-black leading-tight text-white sm:text-4xl">
+      <p className="text-3xl font-black leading-tight text-foreground-strong sm:text-4xl">
         @{username}, este ano metiste {stats.totalCommits} commits, tu mejor racha fue de {stats.longestStreak} dias
         y {stats.summary.topLanguage?.language ?? "tu stack principal"} marco el ritmo.
       </p>
-      <p className="text-sm text-zinc-300 sm:text-base">
+      <p className="text-sm text-foreground-muted sm:text-base">
         Top repo: {stats.summary.topRepo?.name ?? "Sin datos"}. Compartilo y comparalo con tu squad.
       </p>
     </CardShell>

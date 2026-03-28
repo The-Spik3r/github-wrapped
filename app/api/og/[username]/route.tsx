@@ -35,9 +35,9 @@ export async function GET(_request: Request, context: RouteParams) {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            background: "linear-gradient(135deg, #05040d 0%, #1a0533 60%, #0d1f2f 100%)",
+            background: "linear-gradient(180deg, #0d1117 0%, #161b22 100%)",
             padding: "56px",
-            color: "white",
+            color: "#c9d1d9",
             fontFamily: "Geist",
           }}
         >
@@ -52,20 +52,20 @@ export async function GET(_request: Request, context: RouteParams) {
             />
             <div style={{ display: "flex", flexDirection: "column" }}>
               <span style={{ fontSize: 24, opacity: 0.85 }}>GitHub Wrapped</span>
-              <span style={{ fontSize: 52, fontWeight: 700 }}>@{rawData.user.login}</span>
-            </div>
-          </div>
+               <span style={{ fontSize: 52, fontWeight: 700, color: "#f0f6fc" }}>@{rawData.user.login}</span>
+             </div>
+           </div>
 
-          <div style={{ display: "flex", gap: 18 }}>
-            <Stat label="Total commits" value={String(stats.totalCommits)} accent="#1DB954" />
+           <div style={{ display: "flex", gap: 18 }}>
+            <Stat label="Total commits" value={String(stats.totalCommits)} accent="#3fb950" />
             <Stat
               label="Top lenguaje"
               value={stats.topLanguages[0]?.language ?? "N/A"}
-              accent="#8B5CF6"
+              accent="#2f81f7"
             />
-            <Stat label="Racha maxima" value={`${stats.longestStreak} dias`} accent="#06B6D4" />
-          </div>
-        </div>
+            <Stat label="Racha maxima" value={`${stats.longestStreak} dias`} accent="#58a6ff" />
+           </div>
+         </div>
       ),
       {
         width: 1200,
@@ -98,11 +98,11 @@ function Stat({ label, value, accent }: { label: string; value: string; accent: 
         gap: 8,
         padding: "20px 22px",
         borderRadius: 20,
-        background: "rgba(255, 255, 255, 0.1)",
-        border: "1px solid rgba(255,255,255,0.2)",
+        background: "#21262d",
+        border: "1px solid #30363d",
       }}
     >
-      <span style={{ fontSize: 24, color: "rgba(255,255,255,0.82)" }}>{label}</span>
+      <span style={{ fontSize: 24, color: "#8b949e" }}>{label}</span>
       <span style={{ fontSize: 36, fontWeight: 700, color: accent }}>{value}</span>
     </div>
   );

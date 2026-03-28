@@ -8,13 +8,10 @@ interface CardShellProps {
 
 export function CardShell({ title, subtitle, children }: CardShellProps) {
   return (
-    <article className="relative w-full overflow-hidden rounded-[1.7rem] border border-white/15 bg-white/5 p-6 shadow-[0_22px_75px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-8">
-      <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-accent-violet/30 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-8 -left-8 h-28 w-28 rounded-full bg-accent-cyan/20 blur-3xl" />
-
-      <div className="relative space-y-3">
+    <article className="relative w-full overflow-hidden rounded-2xl border border-border bg-surface p-6 shadow-[0_16px_44px_rgba(1,4,9,0.35)] sm:p-8">
+      <div className="space-y-3">
         <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground-muted">{title}</h2>
-        {subtitle ? <p className="text-sm text-zinc-300">{subtitle}</p> : null}
+        {subtitle ? <p className="text-sm text-foreground-muted">{subtitle}</p> : null}
         {children}
       </div>
     </article>

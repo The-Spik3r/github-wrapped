@@ -1,0 +1,697 @@
+[
+  {
+    "id": "TC001",
+    "title": "Generate Wrapped from landing page and load results",
+    "description": "Entering a valid GitHub username on the landing page navigates to the user Wrapped page and shows the Wrapped preview content.",
+    "category": "Username Search and Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the GitHub username field with octocat"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form to generate Wrapped"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on a user Wrapped results page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a Wrapped preview with metric cards is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Invalid username shows error UI on results page",
+    "description": "Submitting a clearly invalid GitHub username navigates to the results route and displays an error state.",
+    "category": "Username Search and Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the GitHub username field with this-user-should-not-exist-1234567890"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form to generate Wrapped"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on a user Wrapped results page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an error state is displayed indicating the Wrapped could not be generated"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Username input trims surrounding whitespace",
+    "description": "Submitting a username with leading/trailing spaces still navigates to the intended Wrapped page.",
+    "category": "Username Search and Navigation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the GitHub username field with  octocat  "
+      },
+      {
+        "type": "action",
+        "description": "Submit the form to generate Wrapped"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on a user Wrapped results page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a Wrapped preview with metric cards is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Empty username submission is blocked with validation feedback",
+    "description": "Submitting the form without a username does not proceed and shows a validation indication.",
+    "category": "Username Search and Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form to generate Wrapped"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user remains on the landing page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a username validation error is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Username accepts uppercase characters and still loads results",
+    "description": "Submitting a valid username in mixed/uppercase proceeds and loads the Wrapped page.",
+    "category": "Username Search and Navigation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the GitHub username field with OCTOCAT"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form to generate Wrapped"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on a user Wrapped results page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a Wrapped preview with metric cards is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Landing page primary content loads",
+    "description": "The landing page loads and provides the primary action to enter a username and generate Wrapped.",
+    "category": "Username Search and Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the username input field is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the generate Wrapped action is available"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Wrapped page loads profile summary and computed metric cards for a known user",
+    "description": "Opening a user Wrapped page renders the profile summary and populated metric cards.",
+    "category": "GitHub Data Aggregation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the GitHub username field with octocat"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form to generate Wrapped"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a profile summary section is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify metric cards are populated with computed stats"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Wrapped page shows invalid username error state",
+    "description": "Opening a Wrapped page for a non-existent user results in a deterministic error UI.",
+    "category": "GitHub Data Aggregation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the GitHub username field with this-user-should-not-exist-1234567890"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form to generate Wrapped"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an error state is displayed indicating the username is invalid or could not be found"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Wrapped page renders multiple distinct metric cards",
+    "description": "The Wrapped page displays multiple metric cards as part of the computed results.",
+    "category": "GitHub Data Aggregation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the GitHub username field with octocat"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form to generate Wrapped"
+      },
+      {
+        "type": "action",
+        "description": "Click the carousel next control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify metric cards are displayed and change when navigating through the carousel"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Refreshless initial load shows results without requiring user interaction",
+    "description": "After generating Wrapped, the results are visible without any additional clicks.",
+    "category": "GitHub Data Aggregation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the GitHub username field with octocat"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form to generate Wrapped"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Wrapped preview content is displayed without additional user actions"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Wrapped page remains usable while content is loading",
+    "description": "The page provides a deterministic loading or placeholder state before computed data is shown.",
+    "category": "GitHub Data Aggregation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the GitHub username field with octocat"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form to generate Wrapped"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the Wrapped page content to finish loading"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the final profile summary and metric cards are displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Advance carousel with right arrow key",
+    "description": "Using the keyboard right arrow advances the carousel to the next card.",
+    "category": "Animated Wrapped Card Carousel",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the GitHub username field with octocat"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form to generate Wrapped"
+      },
+      {
+        "type": "action",
+        "description": "Press ArrowRight"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the carousel advances to a different metric card"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Navigate carousel with previous and next controls",
+    "description": "Clicking the next and previous controls changes the visible metric card.",
+    "category": "Animated Wrapped Card Carousel",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the GitHub username field with octocat"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form to generate Wrapped"
+      },
+      {
+        "type": "action",
+        "description": "Click the carousel next control"
+      },
+      {
+        "type": "action",
+        "description": "Click the carousel previous control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the carousel changes cards when using the navigation controls"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Jump to a specific card via progress dots",
+    "description": "Selecting a progress dot navigates directly to the corresponding card.",
+    "category": "Animated Wrapped Card Carousel",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the GitHub username field with octocat"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form to generate Wrapped"
+      },
+      {
+        "type": "action",
+        "description": "Click a non-active carousel progress dot"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the carousel jumps to the selected metric card"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Reverse carousel with left arrow key",
+    "description": "Using the keyboard left arrow moves the carousel back to the previous card.",
+    "category": "Animated Wrapped Card Carousel",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the GitHub username field with octocat"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form to generate Wrapped"
+      },
+      {
+        "type": "action",
+        "description": "Press ArrowRight"
+      },
+      {
+        "type": "action",
+        "description": "Press ArrowLeft"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the carousel returns to the earlier metric card"
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Carousel remains functional after rapid sequential navigation",
+    "description": "Rapidly navigating through cards does not break the carousel and continues to show metric cards.",
+    "category": "Animated Wrapped Card Carousel",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the GitHub username field with octocat"
+      },
+      {
+        "type": "action",
+        "description": "Submit the form to generate Wrapped"
+      },
+      {
+        "type": "action",
+        "description": "Click the carousel next control"
+      },
+      {
+        "type": "action",
+        "description": "Click the carousel next control"
+      },
+      {
+        "type": "action",
+        "description": "Click a carousel progress dot"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a metric card is displayed after rapid navigation"
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Export current metric card as PNG",
+    "description": "Verifies a user can export the currently focused metric card as a PNG image from the Wrapped results page.",
+    "category": "Social Sharing and Image Export",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid public GitHub username into the username field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the username to generate the Wrapped"
+      },
+      {
+        "type": "action",
+        "description": "Focus the desired metric card in the carousel"
+      },
+      {
+        "type": "action",
+        "description": "Click the action to export the current card as a PNG image"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a PNG image download is initiated"
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "Open Twitter share intent from a focused card",
+    "description": "Verifies the Twitter share intent opens from the Wrapped results page after focusing a metric card.",
+    "category": "Social Sharing and Image Export",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid public GitHub username into the username field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the username to generate the Wrapped"
+      },
+      {
+        "type": "action",
+        "description": "Focus the desired metric card in the carousel"
+      },
+      {
+        "type": "action",
+        "description": "Click the action to share on Twitter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a new share window is opened"
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "Open LinkedIn share dialog from a focused card",
+    "description": "Verifies the LinkedIn share dialog opens from the Wrapped results page after focusing a metric card.",
+    "category": "Social Sharing and Image Export",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid public GitHub username into the username field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the username to generate the Wrapped"
+      },
+      {
+        "type": "action",
+        "description": "Focus the desired metric card in the carousel"
+      },
+      {
+        "type": "action",
+        "description": "Click the action to share on LinkedIn"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a new share window is opened"
+      }
+    ]
+  },
+  {
+    "id": "TC020",
+    "title": "Share action provides no in-app confirmation when popup is blocked",
+    "description": "Verifies the UI does not show a share confirmation state after triggering share, consistent with the no-confirmation behavior.",
+    "category": "Social Sharing and Image Export",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid public GitHub username into the username field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the username to generate the Wrapped"
+      },
+      {
+        "type": "action",
+        "description": "Focus the desired metric card in the carousel"
+      },
+      {
+        "type": "action",
+        "description": "Click the action to share on Twitter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no share success confirmation is shown in the page UI"
+      }
+    ]
+  },
+  {
+    "id": "TC021",
+    "title": "Switch carousel card and export reflects the currently focused card",
+    "description": "Verifies exporting after changing the focused card exports the currently visible selection (not a previously focused one).",
+    "category": "Social Sharing and Image Export",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid public GitHub username into the username field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the username to generate the Wrapped"
+      },
+      {
+        "type": "action",
+        "description": "Focus one metric card in the carousel"
+      },
+      {
+        "type": "action",
+        "description": "Focus a different metric card in the carousel"
+      },
+      {
+        "type": "action",
+        "description": "Click the action to export the current card as a PNG image"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a PNG image download is initiated"
+      }
+    ]
+  },
+  {
+    "id": "TC022",
+    "title": "Results page shows share and export controls when Wrapped is displayed",
+    "description": "Verifies social sharing and image export controls are available on the Wrapped results page.",
+    "category": "Social Sharing and Image Export",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid public GitHub username into the username field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the username to generate the Wrapped"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the Wrapped results to finish loading"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify sharing controls are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an image export control is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC023",
+    "title": "OG image endpoint returns an image response",
+    "description": "Verifies the dynamic OG image route returns an image response for a valid username.",
+    "category": "Dynamic OG Image Generation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid public GitHub username into the username field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the username to generate the Wrapped"
+      },
+      {
+        "type": "action",
+        "description": "Verify the Wrapped results are displayed"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to the OG image endpoint for the same username"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an image is displayed"
+      }
+    ]
+  }
+]

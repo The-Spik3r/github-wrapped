@@ -79,21 +79,21 @@ export function CardCarousel({ cards, username }: CardCarouselProps) {
   return (
     <section className="space-y-5">
       <div className="flex items-center justify-between">
-        <p className="text-sm text-zinc-400">
+        <p className="text-sm text-foreground-muted">
           Card {index + 1} / {total}
         </p>
         <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={jumpPrev}
-            className="rounded-xl border border-white/20 bg-white/5 px-3 py-2 text-sm font-semibold text-white transition hover:bg-white/15"
+            className="rounded-lg border border-border bg-surface-soft px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-foreground-strong"
           >
             ←
           </button>
           <button
             type="button"
             onClick={jumpNext}
-            className="rounded-xl border border-white/20 bg-white/5 px-3 py-2 text-sm font-semibold text-white transition hover:bg-white/15"
+            className="rounded-lg border border-border bg-surface-soft px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-foreground-strong"
           >
             →
           </button>
@@ -109,7 +109,7 @@ export function CardCarousel({ cards, username }: CardCarouselProps) {
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.35, ease: "easeOut" }}
+            transition={{ type: "spring", stiffness: 220, damping: 24, mass: 0.8 }}
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             onDragEnd={(_, info) => {
@@ -132,7 +132,7 @@ export function CardCarousel({ cards, username }: CardCarouselProps) {
             key={card.id}
             type="button"
             onClick={() => setCard(dotIndex)}
-            className={`h-2 rounded-full transition ${dotIndex === index ? "w-9 bg-accent-cyan" : "w-2 bg-white/30"}`}
+            className={`h-2 rounded-full transition-all duration-300 ${dotIndex === index ? "w-9 bg-accent" : "w-2 bg-border"}`}
             aria-label={`Ir a card ${dotIndex + 1}`}
           />
         ))}

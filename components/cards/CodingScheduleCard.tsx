@@ -22,12 +22,12 @@ export function CodingScheduleCard({ schedule }: CodingScheduleCardProps) {
     >
       <div className="grid gap-3 sm:grid-cols-2">
         {schedule.map((entry) => (
-          <div key={entry.bucket} className="rounded-2xl border border-white/10 bg-white/5 p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-400">
+          <div key={entry.bucket} className="rounded-xl border border-border bg-surface-soft p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.15em] text-foreground-muted">
               {LABELS[entry.bucket]}
             </p>
-            <p className="mt-1 text-3xl font-black text-white">{entry.commits}</p>
-            <p className="text-sm text-zinc-300">{entry.percentage}% del total anual</p>
+            <p className="mt-1 text-3xl font-black text-foreground-strong">{entry.commits}</p>
+            <p className="text-sm text-foreground-muted">{entry.percentage}% del total anual</p>
           </div>
         ))}
       </div>
