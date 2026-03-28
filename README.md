@@ -10,6 +10,10 @@
 
 Built with Next.js App Router, Octokit, Framer Motion, and dynamic OG image generation.
 
+## Screenshot
+
+![GitHub Wrapped Landing](docs/images/github-wrapped-landing.png)
+
 ## Preview vibe
 
 - `Dark GitHub-inspired UI` with subtle depth and clean borders.
